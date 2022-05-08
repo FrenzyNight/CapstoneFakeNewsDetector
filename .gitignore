@@ -1,0 +1,5 @@
+
+Parameter/
+.cache/
+.vscode/
+__pycache__/
