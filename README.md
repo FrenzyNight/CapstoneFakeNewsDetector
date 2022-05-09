@@ -25,7 +25,7 @@ pip install transformers
 # 코드 설명
 ## FNDetectorPatcher
 - 해당 파일은 SKT서버에서 BERT모델에 사용되는 파라미터와 같은 Pretrained된 설정들을 가져오는 역할을 수행함
-- 초기 1회 실행하면 .cache폴더가 자동으로 다운됨
+- 초기 1회만 실행해도  .cache폴더가 자동으로 다운됨
 
 ## FNDetectionModel
 - BERT모델 자체를 불러오는 class
