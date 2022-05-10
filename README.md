@@ -21,6 +21,7 @@ pip install torch
 pip install transformers
 ```
 - 위와같이 설치하면 계속 urllib3, numpy와 같은 라이브러리들이 버전이 안맞는다고 나오는데 그런 경우에는 transformers의 라이브러리에 numpy버전과 urlib3버전을 맞추고 뜨는 warning 메세지는 무시하고 실행하면 실행이 가능함
+- 이후에 프로젝트 폴더에 KoBERT 리포지토리를 직접 clone하거나 파이선 라이브러리 폴더에 clone하면 이용 가능함
 
 # 코드 설명
 ## FNDetectorPatcher
