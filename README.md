@@ -36,3 +36,10 @@ pip install transformers
 - FNDetectinModel을 호출해 실제 FakeNews를 판독하는 역할을 하는 최종 클래스
 - Datset폴더에 있는 FNDetectorParameters.pt 파라미터를 불러와서 BERT를 초기화
 - inference함수에서 does_infer_keyword를 True로 주면 infer_keyword 함수를 호출하여 실제 FakeNews를 찾는데 많은 영향을 끼친 단어를 영향력 순으로 정렬해서 pandas dataframe 형태로 return함. FakeNews인지를 나타내는 bool값 또한 return.
+
+## FNDwithjson
+- 메인 실행 파일으로 명령행 인자로 입력 파일 이름, 출력 파일 이름, 단어 길이를 주면 inputfile에 따라서 outputfile을 생성해줌
+- 단어 길이는 각 단어가 가짜뉴스 탐지에 영향을 얼마나 미쳤는지를 높은순서대로 보여주는 기능에 사용되며 기입되는 숫자의 길이만큼 단어를 출력함
+```
+python FNDwithjson.py input_file_name.json output_file_name.json 20
+```
