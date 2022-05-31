@@ -1,11 +1,10 @@
-from sqlalchemy import false
+#from sqlalchemy import false
 import torch
 from FNDetectionModel import BERTClassifier
 import gluonnlp as nlp
 from kobert import get_tokenizer
 from kobert import get_pytorch_kobert_model
 import numpy as np
-import pandas as pd
 import json
 
 import sys
@@ -141,27 +140,19 @@ if __name__ == "__main__":
     word_weight_list, result = FNDetector.inference(title, body)
 
     word_weight_list = sorted(word_weight_list, key=(lambda x: x['weight']), reverse=True)
-    
-    words = []
-    weights = []
-
-    for i in range(words_len):
-        words.append(word_weight_list[i]['word'])    
-        weights.append(word_weight_list[i]['weight'])
-
-    df = pd.DataFrame()
-
+   
+    word_weight_list = word_weight_list[:words_len]
+     
     new_data = {
     'TF' : result,
-    'Score' : 13,
-    'Words' : words,
-    'Weights' : weights
+    'Score' : 14,
+    'Keywords' : word_weight_list
     }
-    df = df.append(new_data, ignore_index=True)
+
+
 
     with open(output_file_name, "w", encoding="utf-8") as f:
-        df.to_json(f, force_ascii=False)
+        json.dump(new_data, f, ensure_ascii=False)
 
     print("result:","Fake News" if result else "True news")
 
-    print(df)
