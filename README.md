@@ -43,3 +43,6 @@ pip install transformers
 ```
 python FNDwithjson.py input_file_name.json output_file_name.json 20
 ```
+
+# Patch
+2022-06-01 00:37)config-agent.yaml 파일을 제외한 agent 기능까지 포함하여 commit 및 push
