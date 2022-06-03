@@ -87,16 +87,22 @@ class FakeNewsDetector:
 
         result = True if result_idx==1 else False
 
+        sigmoid = torch.nn.Sigmoid()
+        per = sigmoid(out)
+        if(per[0][0] >  per[0][1]):
+            val = per[0][0].item()
+        else:
+            val = per[0][1].item()
+
+        score = (int)(val*100)
 
         if does_infer_keyword:
 
             word_weight_list = self.infer_keyword(elemwise_final_layer, tokenized, result_idx)
 
-            return word_weight_list, result
+            return word_weight_list, result, score
         else:
             return result
-
-
 
 
 def read_arguments():
@@ -137,15 +143,18 @@ if __name__ == "__main__":
     
     FNDetector = FakeNewsDetector(use_GPU=True)
 
-    word_weight_list, result = FNDetector.inference(title, body)
+    word_weight_list, result, score = FNDetector.inference(title, body)
 
     word_weight_list = sorted(word_weight_list, key=(lambda x: x['weight']), reverse=True)
    
     word_weight_list = word_weight_list[:words_len]
-     
+    
+
+
+
     new_data = {
     'TF' : result,
-    'Score' : 14,
+    'Score' : score,
     'Keywords' : word_weight_list
     }
 
