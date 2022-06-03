@@ -3,3 +3,5 @@ Parameter/
 .cache/
 .vscode/
 __pycache__/
+.yaml
+.exe
